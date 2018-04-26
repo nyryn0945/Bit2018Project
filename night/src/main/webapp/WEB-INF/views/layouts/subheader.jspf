@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 </head>
 <body class="bg-light">
 	<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white border-bottom box-shadow p-3 px-md-4">
