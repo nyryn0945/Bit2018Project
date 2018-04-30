@@ -9,5 +9,5 @@
 	<title>NIGHT</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/select2-bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
+	<link rel="stylesheet" href="static/css/select2-bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/default.css">

@@ -16,7 +16,6 @@ const session = require('express-session');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const flash = require('express-flash');
-const sassMiddleware = require('node-sass-middleware');
 
 // 설정 파일 불러오기
 const config = require('./config/config');
@@ -46,14 +45,8 @@ app.use(bodyParser.urlencoded({
 // cookie-parser 설정
 app.use(cookieParser());
 
-// public 폴더를 static으로 오픈
-app.use(sassMiddleware({
-	src: path.join(__dirname, 'public'),
-	dest: path.join(__dirname, 'public'),
-	indentedSyntax: true, // true = .sass and false = .scss
-	sourceMap: true
-}));
-app.use(express.static(path.join(__dirname, 'public')));
+// static으로 오픈 // 근데 이거능 자바에서 오픈할꺼임..
+// app.use(express.static(path.join(__dirname, '../night/src/main/webapp/resources')));
 
 // 세션 설정
 app.use(session({

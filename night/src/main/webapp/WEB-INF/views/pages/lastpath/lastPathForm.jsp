@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <%@ include file="../../layouts/header.jspf" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/lastPath.css">
+<link rel="stylesheet" href="static/css/lastPath.css">
 <%@ include file="../../layouts/subheader.jspf" %>
 
 <main role="main">
@@ -68,26 +68,6 @@
 	<!-- /container -->
 </main>
 
-<!-- Modal -->
-<div class="modal fade" id="busStationInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-			
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-
 <%@ include file="../../layouts/subfooter.jspf" %>
-<script src="${pageContext.request.contextPath}/js/lastPath.js"></script>
+<script src="static/js/lastPath.js"></script>
 <%@ include file="../../layouts/footer.jspf" %>

@@ -37,6 +37,25 @@ $(document).ready(function() {
 			cache : true
 		},
 		placeholder: "지하철 선택"
+	})
+	.on('select2:select', function (e) {
+		var data = e.params.data;
+		console.log(data);
+		$.ajax({
+			url: "api/subway/SearchLastTrainTimeByIDService",
+			data: {
+				station_cd: data.id
+			},
+			type: "GET",
+			dataType: "JSON"
+		})
+		.done(function(res) {
+			console.log(res);
+			// buildBusRoute(res);
+		})
+		.fail(function(err) {
+			console.log(err);
+		});
 	});
 	
 	$("#busRouteNm").select2({
@@ -69,28 +88,21 @@ $(document).ready(function() {
 			console.log(err);
 		});
 	});
-	
-	$('#busStationInfoModal').on('show.bs.modal', function(event) {
-		var button = $(event.relatedTarget);
-		var data = button.data('data');
-		var modal = $(this);
-		modal.find('.modal-title').text(data.stationNm);
-		$.ajax({
-			
-		});
-		modal.find('.modal-body').text();
-	});
 });
 
 var buildBusRoute = function(res) {
 	var $wrap = $('#getStaionByRoute');
-	$wrap.removeClass('mb-0').addClass('mb-3').html(); // 내용 초기화
+	$wrap.removeClass('mb-0').addClass('mb-3').html(''); // 내용 초기화
 	$.each(res, function(i, item) {
 		$('<li>', {
 			'class': 'list-group-item list-group-item-action',
 			'data-toggle': 'modal',
 			'data-target': '#busStationInfoModal'
-		}).text(item.stationNm)
+		})
+		.append(
+			$('<span>').text(item.stationNm),
+			item.lastTm == ':' ? "" : $('<time>').text(item.lastTm)
+		)
 		.data('data', item)
 		.appendTo($wrap);
 	});

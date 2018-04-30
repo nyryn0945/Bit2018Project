@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
-#getStaionByRoute li {
-	cursor: pointer;
+#getStaionByRoute li time {
+	margin-left: 5px;
+	color: #007bff;
 }
