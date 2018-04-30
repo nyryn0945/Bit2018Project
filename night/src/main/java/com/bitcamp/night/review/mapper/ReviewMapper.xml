@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.bitcamp.night.review.dao.ReviewDao">
+
+    <insert id = "insertReview" parameterType = "com.bitcamp.night.review.model.Review">
+       insert into review (MB_ID, STORE_ID, REVIEW_CONTENT )
+       values ( #{MB_ID}, #{STORE_ID}, #{REVIEW_CONTENT} )
+    </insert>
+   
+    <select id = "selectList" resultType = "com.bitcamp.night.review.model.Review">
+       select * from review
+    
+    
+    </select>
+
+
+</mapper>	
+	
+	
+	
