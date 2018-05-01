@@ -8,17 +8,17 @@ import com.bitcamp.night.review.dao.ReviewDao;
 import com.bitcamp.night.review.model.Review;
 
 @Service("ReviewService")
-public class ReviewService {
+public class ReviewService
+{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
 	private ReviewDao dao;
 
-	public Review review(Review review) {
+	public Review review(Review review)
+	{
 		dao = sqlSessionTemplate.getMapper(ReviewDao.class);
-		
 		dao.insertReview(review);
-		
 		return review;
 	}
 

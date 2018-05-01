@@ -10,19 +10,19 @@ import com.bitcamp.night.review.dao.ReviewDao;
 import com.bitcamp.night.review.model.Review;
 
 @Service("ReviewListService")
-public class ReviewListService {
-	
+public class ReviewListService
+{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-    
-    private ReviewDao dao;
-	
-	public List<Review> getReviewList() {
-		
+
+	private ReviewDao dao;
+
+	public List<Review> getReviewList()
+	{
 		dao = sqlSessionTemplate.getMapper(ReviewDao.class);
-		
+
 		List<Review> list = dao.selectList();
-		
+
 		return list;
 	}
 

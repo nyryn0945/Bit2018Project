@@ -1,18 +1,19 @@
 package com.bitcamp.night.review.service;
 
+import org.springframework.stereotype.Service;
+
 import com.bitcamp.night.review.model.Review;
 
-public class ReviewUpdateService {
-
-	public Review selectById(String id) {
-		// TODO Auto-generated method stub
+@Service("ReviewUpdateService")
+public class ReviewUpdateService
+{
+	public Review selectById(String id)
+	{
 		return null;
 	}
 
-	
-
-	public Review review(Review review) {
-		// TODO Auto-generated method stub
+	public Review review(Review review)
+	{
 		return null;
 	}
 
