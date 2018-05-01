@@ -7,7 +7,7 @@
 
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<h5 class="mb-3 font-weight-bold">집에 가자</h5>
-			<form class="lastPath" action="${pageContext.request.contextPath}/lastPath" method="post">
+			<form class="findLastQuickPath">
 				<div class="form-row mb-3">
 					<div class="col-md-6">
 						<label for="departure_stop">출발지</label>
@@ -21,11 +21,12 @@
 				</div>
 				<button type="submit" class="btn btn-primary">막차 검색</button>
 			</form>
+			<ul id="findLastQuickPath" class="list-group mb-0"></ul>
 		</div>
 		
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<h5 class="mb-3 font-weight-bold">지하철 막차 검색</h5>
-			<form class="lastPath">
+			<form>
 				<div class="form-row mb-3">
 					<div class="col-md-4">
 						<select name="statnFnm" id="statnFnm" class="form-control">
@@ -33,13 +34,13 @@
 						</select>
 					</div>
 				</div>
-				<ul id="searchLastTrainTimeByID" class="form-row list-group mb-0"></ul>
 			</form>
+			<ul id="searchLastTrainTimeByID" class="list-group mb-0"></ul>
 		</div>
 		
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<h5 class="mb-3 font-weight-bold">버스 막차 검색</h5>
-			<form class="lastPath">
+			<form>
 				<div class="form-row mb-3">
 					<div class="col-md-4">
 						<!-- <input type="text" name="bus_number" class="form-control" id="bus_number" placeholder="버스번호"> -->
@@ -48,8 +49,8 @@
 						</select>
 					</div>
 				</div>
-				<ul id="getStaionByRoute" class="form-row list-group mb-0"></ul>
 			</form>
+			<ul id="getStaionByRoute" class="list-group mb-0"></ul>
 		</div>
 		
 	</div><!-- /container -->
