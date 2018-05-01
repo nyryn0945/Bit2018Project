@@ -16,9 +16,17 @@ const session = require('express-session');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const flash = require('express-flash');
+const Sequelize = require('sequelize');
 
 // 설정 파일 불러오기
 const config = require('./config/config');
+
+
+/* ===================
+  서버 시작 및 DB 연결
+====================*/
+const models = require('./models/mysql');
+models.sequelize.sync();
 
 
 /* ===================
