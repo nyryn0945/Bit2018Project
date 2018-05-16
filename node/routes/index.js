@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const isLoggedIn = require('../config/function').isLoggedIn;
 const models = require('../models/mysql');
 
 // GET localhost/lastpath
-router.get('/', (req, res) => {
+router.get('/lastpath', isLoggedIn, (req, res) => {
 	models.Subway.findAll({
 		attributes: ['station_cd', 'station_nm', 'line_num'],
 		raw: true
@@ -19,6 +20,7 @@ router.get('/', (req, res) => {
 			});
 		}
 		res.render('pages/index', {
+			user: req.user,
 			list: list
 		});
 	});
@@ -72,6 +74,12 @@ router.get('/', (req, res) => {
 		
 		return " (" + str + ")";
 	};
+});
+
+// GET localhost/logout
+router.get('/logout', (req, res, next) => {
+    req.logout();
+    res.redirect('/member/login');
 });
 
 // route localhost/api

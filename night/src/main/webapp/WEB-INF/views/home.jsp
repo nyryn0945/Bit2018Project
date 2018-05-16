@@ -1,15 +1,20 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
-<head>
-	<title>Home</title>
-	<link rel="stylesheet" href="static/css/default.css">
-</head>
-<body>
-<h1>
-Hello world!  444
-</h1>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 
-<P>  The time on the server is ${serverTime}. </P>
-</body>
-</html>
+<%@ include file="./layouts/header.jspf" %>
+<style>.container {width: 600px;}</style>
+<%@ include file="./layouts/subheader.jspf" %>
+
+<main role="main">
+	<div class="container mt-3">
+		<div class="alert alert-primary" role="alert">
+		${MEMBER}<br>
+		${SESSION}
+		</div>
+		<a class="btn btn-primary" href="/night/login" role="button">로그인</a>
+		<a class="btn btn-primary" href="/night/logout" role="button">로그아웃</a>
+	</div> <!-- /container -->
+</main>
+
+<%@ include file="./layouts/subfooter.jspf" %>
+<%@ include file="./layouts/footer.jspf" %>

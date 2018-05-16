@@ -1,0 +1,142 @@
+<%- include('../layouts/header'); %>
+<!-- <link rel="stylesheet" href="/static/css/lastPath.css"> -->
+<%- include('../layouts/subheader'); %>
+
+<main role="main">
+	<div class="container mt-3">
+
+		<div class="my-3 p-3 bg-white rounded box-shadow">
+			<h5 class="mb-3 font-weight-bold">택시 메이트 검색</h5>
+			<form id="taxi">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="departure">출발지</label>
+						<input type="text" name="departure" class="form-control" id="departure" placeholder="출발지" value="강남역 2호선">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="arrival">도착지</label>
+						<input type="text" name="arrival" class="form-control" id="arrival" placeholder="도착지" value="위례 그린파크 푸르지오">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#findMateModal">찾기</button>
+			</form>
+		</div>
+
+	</div><!-- /container -->
+</main>
+
+<div class="modal" tabindex="-1" role="dialog" id="findMateModal" aria-hidden="true" aria-labelledby="findMateModalLabel">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<h5 class="font-weight-bold mb-3">택시 동승자 찾는중...</h5>
+				<h1 class="mb-0"><i class="fas fa-circle-notch fa-spin"></i></h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="chatModalLabel">오픈채팅</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<ul class="list-group list-group-flush" id="chatMessage">
+					<li class="list-group-item list-group-item-action">대화를 시작하세요.</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<form class="input-group" id="chatForm">
+					<input type="text" class="form-control" id="chatInput" placeholder="대화...">
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="submit">입력</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('../layouts/subfooter'); %>
+<script src="/static/js/socket.io.js"></script>
+<script>
+$(function () {
+	var matching = false;
+	var exitByMe = true;
+	var socket = io.connect('http://localhost');
+
+	$('#taxi').submit(function(e) {
+		e.preventDefault();
+
+		var departure = $('#departure').val();
+		var arrival = $('#arrival').val();
+
+		if (departure == '' || arrival == '')
+			return false;
+
+		socket.emit('find mate', {
+			departure: {name: departure},
+			arrival: {name: arrival}
+		});
+
+		return false;
+	});
+
+	socket.on('chat open', function(roomName) {
+		matching = true;
+		$('#findMateModal').modal('hide');
+		$('#chatModal').modal({backdrop: 'static'});
+		$('#chatInput').data('roomName', roomName);
+	});
+
+	$('#findMateModal').on('hidden.bs.modal', function(e) {
+		// 안 매칭된 상태로 종료되는 경우 해당 데이터를 db에서 삭제한다
+		if (!matching)
+			socket.emit('find exit');
+		else
+			matching = false;
+	});
+
+	$('#chatForm').submit(function(e) {
+		e.preventDefault();
+		socket.emit('chat message', {
+			roomName: $('#chatInput').data('roomName'),
+			message: $('#chatInput').val()
+		});
+		$('#chatInput').val('');
+		return false;
+	});
+
+	socket.on('chat message', function(data) {
+		$('#chatMessage').append(
+			$('<li>', {class: 'list-group-item list-group-item-action'}).append(
+				$('<strong>', {class: 'mr-2'}).text(data.sender),
+				$('<span>').text(data.message)
+			)
+		);
+	});
+
+	$('#chatModal').on('hide.bs.modal', function (e) {
+		if (exitByMe) { // 직접 종료시
+			if (!confirm('채팅을 종료하시겠습니까?'))
+				return false;
+			socket.emit('chat exit', $('#chatInput').data('roomName'));
+		}
+		$('#chatInput').val('').data('roomName', '');
+		$('#chatMessage').html('<li class="list-group-item list-group-item-action">대화를 시작하세요.</li>');
+		exitByMe = true;
+	});
+
+	// 채팅 간접 종료시
+	socket.on('chat exit', function() {
+		exitByMe = false;
+		$('#chatModal').modal('hide');
+	});
+});
+</script>
+<%- include('../layouts/footer'); %>

@@ -28,7 +28,7 @@ $(document).ready(function() {
 		var $this = $(this);
 		$.ajax({
 			// url: 'api/path/test',
-			url: 'api/path/findLastQuickPath',
+			url: '/api/path/findLastQuickPath',
 			data: $this.serialize(),
 			type: 'GET',
 			dataType: 'JSON'
@@ -49,7 +49,7 @@ $(document).ready(function() {
 	.on('select2:select', function (e) {
 		var data = e.params.data;
 		$.ajax({
-			url: "api/path/searchLastTrainTimeByIDService/" + data.id,
+			url: "/api/path/searchLastTrainTimeByIDService/" + data.id,
 			type: "GET",
 			dataType: "JSON"
 		})
@@ -64,7 +64,7 @@ $(document).ready(function() {
 	
 	$("#busRouteNm").select2({
 		ajax: {
-			url: "api/path/getBusRouteList",
+			url: "/api/path/getBusRouteList",
 			dataType: "json",
 			minimumInputLength: 2,
 			processResults: function(data) {
@@ -77,7 +77,7 @@ $(document).ready(function() {
 	}).on('select2:select', function (e) {
 		var data = e.params.data;
 		$.ajax({
-			url: "api/path/getStaionByRoute/" + data.id,
+			url: "/api/path/getStaionByRoute/" + data.id,
 			type: "GET",
 			dataType: "JSON"
 		})
@@ -113,7 +113,7 @@ var buildPath = function(path) {
 					$('<small>', {class: 'text-muted'}).text(item2.departure_time.substring(len1 - 9, len1 - 3)),
 					$('<i class="fas fa-long-arrow-alt-right text-primary ml-2 mr-2"></i>'),
 					$('<span>').text(item2.arrival_stop),
-					$('<small>', {class: 'text-muted'}).text(item2.arrival_time.substring(len2 - 9, len2 - 3)),
+					$('<small>', {class: 'text-muted'}).text(item2.arrival_time.substring(len2 - 9, len2 - 3))
 				),
 				$('<div>', {class: 'time'}).append(
 					$('<small>', {class: 'text-primary mr-2'}).text(item2.type == 'BUS' ? '버스' : '지하철'),

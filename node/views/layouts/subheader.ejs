@@ -8,9 +8,17 @@
 
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">오늘의막차</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">택시메이트</a></li>
+				<li class="nav-item active"><a class="nav-link" href="/lastpath">오늘의막차</a></li>
+				<li class="nav-item"><a class="nav-link" href="/taxi">택시메이트</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">액티비티</a></li>
+			</ul>
+			<ul class="navbar-nav">
+				<% if (user) { %>
+				<li class="nav-item"><a class="nav-link" href="/member/logout">로그아웃</a></li>
+				<% } else { %>
+				<li class="nav-item"><a class="nav-link" href="/member/register">회원가입</a></li>
+				<li class="nav-item"><a class="nav-link" href="/member/login">로그인</a></li>
+				<% } %>
 			</ul>
 		</div>
 	</nav>

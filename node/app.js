@@ -13,10 +13,13 @@ const createError = require('http-errors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+const sharedsession = require("express-socket.io-session");
 const morgan = require('morgan');
 const helmet = require('helmet');
 const flash = require('express-flash');
 const Sequelize = require('sequelize');
+const passport = require('passport');
 
 // 설정 파일 불러오기
 const config = require('./config/config');
@@ -27,6 +30,14 @@ const config = require('./config/config');
 ====================*/
 const models = require('./models/mysql');
 models.sequelize.sync();
+
+const mongoose = require('mongoose');
+mongoose.connect(config.mongodbUri);
+const db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', () => {
+    // console.log('connected to mongodb server');
+});
 
 
 /* ===================
@@ -57,20 +68,35 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, '../night/src/main/webapp/resources')));
 
 // 세션 설정
-app.use(session({
+const sessionConfig = session({
+	store: new RedisStore(),
+	name: 'NODESESSION',
 	secret: '@Se#ss%ioN&',
 	resave: false,
-	saveUninitialized: true,
-	cookie: {
-		secure: true
-	}
-}));
+	saveUninitialized: false
+});
+app.use(sessionConfig);
+
+// Passport 사용 설정
+app.use(passport.initialize());
+app.use(passport.session());
 
 // 플래시 사용
 app.use(flash());
 
+// 패스포트 설정
+require('./config/passport')(passport);
+
+// socket.io
+const io = require("socket.io")();
+app.io = io;
+io.use(sharedsession(sessionConfig, {
+    autoSave:true
+})); 
+
 // 라우터 정의
 app.use('/', require('./routes/index'));
+app.use('/taxi', require('./routes/taxi')(io));
 app.use('/test', require('./routes/test'));
 
 // catch 404 and forward to error handler
@@ -86,7 +112,9 @@ app.use((err, req, res, next) => {
 
 	// render the error page
 	res.status(err.status || 500);
-	res.render('pages/error');
+	res.render('pages/error', {
+		user: null
+	});
 });
 
 module.exports = app;

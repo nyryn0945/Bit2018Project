@@ -1,19 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-//const models = require('../models/mysql');
-// router.get('/', (req, res) => {
-// 	models.Subway.findAll({
-// 		attributes: ['subway_id', 'station_NM'],
-// 		where: {
-// 			subway_id: 2
-// 		},
-// 		raw: true
-// 	})
-// 	.then((subs) => {
-// 		console.log(subs);
-// 		res.json(subs);
-// 	});
-// });
+const isLoggedIn = require('../config/function').isLoggedIn;
+
+// GET localhost/test
+router.get('/', isLoggedIn, (req, res) => {
+	console.log(req.user);
+	res.render('pages/test');
+});
+
+// GET localhost/test/not
+router.get('/not', (req, res) => {
+	res.render('pages/test');
+});
 
 module.exports = router;
