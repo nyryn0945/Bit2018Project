@@ -21,7 +21,7 @@ public class TestController
 //			String headerValue = req.getHeader(headerName);
 //			System.out.println(headerValue);
 //		}
-		
+		 
 		String login = "로그아웃 된 상태";
 		HttpSession session = req.getSession();
 		if (session != null && (String) session.getAttribute("USER") != null)
