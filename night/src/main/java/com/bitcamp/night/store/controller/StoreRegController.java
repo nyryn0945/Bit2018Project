@@ -1,5 +1,7 @@
 package com.bitcamp.night.store.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -32,9 +34,13 @@ public class StoreRegController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String storeReg(Store store, Model model, HttpServletRequest request) {
+	public String storeReg(Store store, Model model, HttpServletRequest request) throws IllegalStateException, IOException {
 
 		String msg = "정상적으로 처리되었습니다.";
+		System.out.println("입력창 확인 : "+store);
+		System.out.println("입력창 확인 : "+store);
+		System.out.println("입력창 확인 : "+store);
+		
 		
 		/*store.setPulNumber(store.getStore_pnum1()+"-"+store.getStore_pnum2()+"-"+store.getStore_pnum3());
 		String[] msgArr = msg.split(" ");*/

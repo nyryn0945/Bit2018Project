@@ -7,8 +7,8 @@
 <mapper namespace="com.bitcamp.night.store.dao.StoreDao">
 
 	<insert id="insertStore" parameterType="com.bitcamp.night.store.model.Store">
-		insert into store (cate_id, store_name, store_loc, store_roadaddr, store_jibunaddr, store_starttime, store_endtime, store_pnum1, store_pnum2, store_pnum3, store_hp, mb_id, store_content) 
-		values ( #{cate_id}, #{store_name}, #{store_loc}, #{store_roadaddr}, #{store_jibunaddr}, #{store_starttime}, #{store_endtime}, #{store_pnum1}, #{store_pnum2}, #{store_pnum3}, #{store_hp}, #{mb_id}, #{store_content} )
+		insert into store (cate_id, store_name, store_loc, store_roadaddr, store_jibunaddr, store_starttime, store_endtime, store_pnum1, store_pnum2, store_pnum3, store_hp, mb_id, store_content, store_photo) 
+		values ( #{cate_id}, #{store_name}, #{store_loc}, #{store_roadaddr}, #{store_jibunaddr}, #{store_starttime}, #{store_endtime}, #{store_pnum1}, #{store_pnum2}, #{store_pnum3}, #{store_hp}, #{mb_id}, #{store_content}, #{store_photo} )
 	</insert>
 	
 	<select id="selectList" resultType="com.bitcamp.night.store.model.Store">

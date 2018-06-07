@@ -131,7 +131,7 @@ function chkForm(obj) {
       <div style="width:460px; margin:0 auto; padding-top:50px">
          <div style="background-color:#FFFFFF; padding:30px 15px;">
             <div style="margin-bottom:30px; text-align:center; font-weight:bold; font-size:27px;">신규 매장등록</div>
-            <form name="" method="POST" onSubmit="return chkForm(this);">
+            <form method="POST" enctype="multipart/form-data" onSubmit="return chkForm(this);">
                 <div class="title" >분류</div><br>
                 <select name="cate_id" style="font-size:18px;">
 			     <option value="1">숙박</option>
@@ -140,7 +140,9 @@ function chkForm(obj) {
 			    </select>
                 <br><br>
                 <div class="title">상호명</div>
-               <input type="text" name="store_name" style="font-size:18px;" value="" placeholder="상호명"/><br><br>
+           		    <input type="text" name="store_name" style="font-size:18px;" value="" placeholder="상호명"/><br><br>
+                <div class="title">매장사진</div>
+               		<input type="file" name="photofile">
                <div class="title">가게주소</div>
                 
                 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

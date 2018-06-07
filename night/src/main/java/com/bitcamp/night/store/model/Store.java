@@ -2,8 +2,10 @@ package com.bitcamp.night.store.model;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Store {
-	
+
 	private int store_id;
 	private int cate_id;
 	private String store_name;
@@ -20,17 +22,53 @@ public class Store {
 	private String cate_name;
 	private int mb_id;
 	private String store_content;
-	
-	
+	private String store_photo;
+	private MultipartFile photofile;
+
+	public Store(int store_id, int cate_id, String store_name, String store_roadaddr, String store_jibunaddr,
+			String store_starttime, String store_loc, String store_endtime, String store_pnum1, String store_pnum2,
+			String store_pnum3, String store_hp, Date store_date, String cate_name, int mb_id, String store_content,
+			String store_photo, MultipartFile photofile) {
+		super();
+		this.store_id = store_id;
+		this.cate_id = cate_id;
+		this.store_name = store_name;
+		this.store_roadaddr = store_roadaddr;
+		this.store_jibunaddr = store_jibunaddr;
+		this.store_starttime = store_starttime;
+		this.store_loc = store_loc;
+		this.store_endtime = store_endtime;
+		this.store_pnum1 = store_pnum1;
+		this.store_pnum2 = store_pnum2;
+		this.store_pnum3 = store_pnum3;
+		this.store_hp = store_hp;
+		this.store_date = store_date;
+		this.cate_name = cate_name;
+		this.mb_id = mb_id;
+		this.store_content = store_content;
+		this.store_photo = store_photo;
+		this.photofile = photofile;
+	}
+
+	public Store() {
+
+	}
+
+	public MultipartFile getPhotofile() {
+		return photofile;
+	}
+
+	public void setPhotofile(MultipartFile photofile) {
+		this.photofile = photofile;
+	}
+
 	public int getStore_id() {
 		return store_id;
 	}
-	
-	public Store() {
-		super();
-	}
-	
 
+	public void setStore_id(int store_id) {
+		this.store_id = store_id;
+	}
 
 	public int getCate_id() {
 		return cate_id;
@@ -152,8 +190,12 @@ public class Store {
 		this.store_content = store_content;
 	}
 
-	public void setStore_id(int store_id) {
-		this.store_id = store_id;
+	public String getStore_photo() {
+		return store_photo;
+	}
+
+	public void setStore_photo(String store_photo) {
+		this.store_photo = store_photo;
 	}
 
 	@Override
@@ -163,9 +205,8 @@ public class Store {
 				+ store_starttime + ", store_loc=" + store_loc + ", store_endtime=" + store_endtime + ", store_pnum1="
 				+ store_pnum1 + ", store_pnum2=" + store_pnum2 + ", store_pnum3=" + store_pnum3 + ", store_hp="
 				+ store_hp + ", store_date=" + store_date + ", cate_name=" + cate_name + ", mb_id=" + mb_id
-				+ ", store_content=" + store_content + "]";
+				+ ", store_content=" + store_content + ", store_photo=" + store_photo + ", photofile=" + photofile
+				+ "]";
 	}
-	
 
-	
 }
