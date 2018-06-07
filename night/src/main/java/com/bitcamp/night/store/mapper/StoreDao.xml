@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Dao 에서 메퍼 설정에서 필요한 엘리먼트(설정) 호출할때 식별자 역할 : 필수-->
+<mapper namespace="com.bitcamp.night.store.dao.StoreDao">
+
+	<insert id="insertStore" parameterType="com.bitcamp.night.store.model.Store">
+		insert into store (cate_id, store_name, store_loc, store_roadaddr, store_jibunaddr, store_starttime, store_endtime, store_pnum1, store_pnum2, store_pnum3, store_hp, mb_id, store_content) 
+		values ( #{cate_id}, #{store_name}, #{store_loc}, #{store_roadaddr}, #{store_jibunaddr}, #{store_starttime}, #{store_endtime}, #{store_pnum1}, #{store_pnum2}, #{store_pnum3}, #{store_hp}, #{mb_id}, #{store_content} )
+	</insert>
+	
+	<select id="selectList" resultType="com.bitcamp.night.store.model.Store">
+	SELECT * FROM NIGHT.CATEGORY JOIN NIGHT.STORE
+	ON STORE.CATE_ID = CATEGORY.CATE_ID;
+	</select>
+	
+	<select id="selectCount" resultType="int">
+	SELECT COUNT(*) FROM STORE
+	</select>
+	
+	<select id="searchList" resultType="com.bitcamp.night.store.model.Store">
+	SELECT * FROM NIGHT.STORE JOIN NIGHT.CATEGORY 
+	ON STORE.CATE_ID = CATEGORY.CATE_ID AND STORE.store_jibunaddr like CONCAT('%',#{param1},'%') LIMIT #{param2}, 10
+	</select>
+	
+	<select id="selectById" parameterType="com.bitcamp.night.store.model.Store" resultType="com.bitcamp.night.store.model.Store">
+	SELECT * FROM NIGHT.STORE JOIN NIGHT.CATEGORY
+	ON STORE.CATE_ID = category.CATE_ID AND store_id = #{store_id}
+	</select>
+	
+	<update id="storeUpdate" parameterType="com.bitcamp.night.store.model.Store">
+      UPDATE NIGHT.STORE SET STORE_NAME = #{store_name} WHERE store_id = #{store_id}
+   </update>
+   
+   <delete id="storeDelete">
+      DELETE FROM NIGHT.STORE WHERE STORE_ID = #{store_id}
+   </delete>
+	
+	</mapper>
+
+
