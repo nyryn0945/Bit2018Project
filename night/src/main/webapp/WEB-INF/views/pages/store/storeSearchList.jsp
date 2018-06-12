@@ -31,8 +31,8 @@
          <div class="form-group">
             <input type="text" name="searchStore" class="form-control" id="searchStore" size="20">
             <input type="hidden" name="startNum" class="form-control" id="startNum" size="20" value="0">
-         </div>
-         <button type="submit" class="ml-sm-2 btn btn-primary" onclick="countclick();">검색</button>
+            <button type="submit" class="ml-sm-2 btn btn-primary" onclick="countclick();">검색</button>
+         </div>        
       </form>
       <div class="div">
       	<div id="ajaxDiv" class="row">
@@ -69,16 +69,16 @@ if(count > 1)
          success:function(res) {   
         	 var $ajaxDiv = $('#ajaxDiv');
             	 $.each(res, function(i, row) {
-            		 var $div = $('<div class="col-6">').append(	               		   				
-            			$('<div class="img">'),
-         	   			$('<img src="https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/52260/51271/52260_51271_98_0_651_20151220134343864_200x200.jpg" onError="noImage(this)" style="width:100px; height:100px;">'),
-         	   			$('</div>'),	   				
-         	   			$('<div class="title">'),
-         	   			$('<a href="storeInfo?store_id='+row.store_id+'&addressName='+row.store_jibunaddr+'"style="color:black; font-weight:bold">'+row.store_name+'</a>'),					       	   			
-	         	   		$('<div class="times">'+row.store_pnum1+'-'+row.store_pnum2+"-"+row.store_pnum3+'</div>'),
-	 	   				$('<div class="jibunaddr">'+row.store_jibunaddr+'</div>'),
-         	   			$('</div>'),
-         	   			$('</div>'));
+            		 var $div = $('<div>').append(	               		   				
+            				$('<div class="img">'),
+            				$('<img src="https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/52260/51271/52260_51271_98_0_651_20151220134343864_200x200.jpg" onError="noImage(this)" style="width:200px; height:200px;">'),
+             	   			$('</div>'),	   				
+                  	   		$('<div class="title">'),
+                  	   		$('<a href="storeInfo?store_id='+row.store_id+'&addressName='+row.store_jibunaddr+'"style="color:black; font-weight:bold">'+row.store_name+'</a>'),
+     	             	   	$('<div class="times">'+row.store_pnum1+'-'+row.store_pnum2+"-"+row.store_pnum3+'</div>'),
+     	     	   			$('<div class="jibunaddr">'+row.store_jibunaddr+'</div>'),
+                  	   		$('</div>'),
+                  	   		$('</div>'));
          	    $div.appendTo($ajaxDiv);
        		});
          }
@@ -102,10 +102,10 @@ function getData() {
                var $ajaxDiv = $('#ajaxDiv');
             	$ajaxDiv.html('');
             	   $.each(res, function(i, row) {
-            		var $div = $('<div class="col-6">').append(	               		   				
+            		var $div = $('<div>').append(	               		   				
             			$('<div class="img">'),
-             	   		$('<img src="https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/52260/51271/52260_51271_98_0_651_20151220134343864_200x200.jpg" onError="noImage(this)" style="width:130px; height:130px;">'),
-             	   		$('</div>'),	   				
+            			$('<img src="https://d2t7cq5f1ua57i.cloudfront.net/images/r_images/52260/51271/52260_51271_98_0_651_20151220134343864_200x200.jpg" onError="noImage(this)" style="width:200px; height:200px;">'),
+         	   			$('</div>'),	   				
              	   		$('<div class="title">'),
              	   		$('<a href="storeInfo?store_id='+row.store_id+'&addressName='+row.store_jibunaddr+'"style="color:black; font-weight:bold">'+row.store_name+'</a>'),
 	             	   	$('<div class="times">'+row.store_pnum1+'-'+row.store_pnum2+"-"+row.store_pnum3+'</div>'),

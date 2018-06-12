@@ -106,6 +106,43 @@ function chkForm(obj) {
       return false;
    }
 }
+var InputImage = 
+   (function loadImageFile() {
+    if (window.FileReader) {
+        var ImagePre; 
+        var ImgReader = new window.FileReader();
+        var fileType = /^(?:image\/bmp|image\/gif|image\/jpeg|image\/png|image\/x\-xwindowdump|image\/x\-portable\-bitmap)$/i; 
+
+        ImgReader.onload = function (Event) {
+            if (!ImagePre) {
+                var newPreview = document.getElementById("imagePreview");
+                ImagePre = new Image();
+                ImagePre.style.width = "200px";
+                ImagePre.style.height = "140px";
+                newPreview.appendChild(ImagePre);
+            }
+            ImagePre.src = Event.target.result;
+            
+        };
+
+        return function () {
+           
+            var img = document.getElementById("image").files;
+           
+            if (!fileType.test(img[0].type)) { 
+               alert("이미지 파일을 업로드 하세요"); 
+               return; 
+            }
+            
+            ImgReader.readAsDataURL(img[0]);
+        }
+
+    }
+            
+            document.getElementById("imagePreview").src = document.getElementById("image").value;
+
+      
+})();
 
 </script>
 </head>
@@ -134,19 +171,21 @@ function chkForm(obj) {
             <form method="POST" enctype="multipart/form-data" onSubmit="return chkForm(this);">
                 <div class="title" >분류</div><br>
                 <select name="cate_id" style="font-size:18px;">
-			     <option value="1">숙박</option>
-			     <option value="2">놀거리</option>
-			     <option value="3">음식점</option>
-			    </select>
+              <option value="1">숙박</option>
+              <option value="2">놀거리</option>
+              <option value="3">음식점</option>
+             </select>
                 <br><br>
                 <div class="title">상호명</div>
-           		    <input type="text" name="store_name" style="font-size:18px;" value="" placeholder="상호명"/><br><br>
+                     <input type="text" name="store_name" style="font-size:18px;" value="" placeholder="상호명"/><br><br>
                 <div class="title">매장사진</div>
-               		<input type="file" name="photofile">
+                <div id="imagePreview"></div>
+                     <input id="image" type="file"  multiple="multiple" name="photofile" onchange="InputImage();">
+                     
                <div class="title">가게주소</div>
                 
                 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script>
+   <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -198,13 +237,13 @@ function chkForm(obj) {
         }).open();
     }
 </script>
-			<div class="addrdiv"><input type="text" id="sample4_postcode" placeholder="우편번호" style="font-size:18px;" value="">
-			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-			<input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="store_roadaddr" style="font-size:18px;" value="">
-			<input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="store_jibunaddr" style="font-size:18px;" value="">
-			<input type="text" placeholder="상세주소" name="store_loc"  style="font-size:18px;" value="">
-			<span id="guide" style="color:#999"></span>
-			</div><br>
+         <div class="addrdiv"><input type="text" id="sample4_postcode" placeholder="우편번호" style="font-size:18px;" value="">
+         <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+         <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="store_roadaddr" style="font-size:18px;" value="">
+         <input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="store_jibunaddr" style="font-size:18px;" value="">
+         <input type="text" placeholder="상세주소" name="store_loc"  style="font-size:18px;" value="">
+         <span id="guide" style="color:#999"></span>
+         </div><br>
 
                 
                <div class="title">영업 시작 시간</div>

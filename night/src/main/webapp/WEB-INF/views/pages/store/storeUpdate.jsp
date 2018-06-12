@@ -22,6 +22,10 @@ td {
    <h3>매장정보 수정</h3>
    <form action="${pageContext.request.contextPath}/store/storeUpdate" method="post">
       <input type="hidden" name="store_id" value="${stores.store_id}">
+      <div>
+      	<div>
+      	</div>
+      </div>
       <table border="1">
          <tr>
             <td>번호</td>

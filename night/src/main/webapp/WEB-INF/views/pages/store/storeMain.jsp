@@ -1,28 +1,85 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="../../layouts/header.jspf" %>
-<style>.container {width: 600px;}</style>
+<style>
+.search_01 .searchBox {
+    padding: 0 4% 0 4%;
+    background-color: #fff;
+}
+.search_01 .inputArea {
+    padding: 10px 0 0;
+}
+.search_01 .inputArea > div {
+    position: relative;
+}
+.search_01 .inputArea input {
+    margin-left: 19px;
+    padding-right: 0;
+    padding-left: 10px;
+}
+.search_01 .inputArea > div:before {
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 19px;
+    height: 19px;
+    background: url(https://s3-ap-northeast-1.amazonaws.com/dcicons/2018/images/mobile/search/ic-search-input.png) no-repeat;
+    background-size: 100% 100%;
+    content: '';
+}
+.inputArea > div {
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 0;
+    border-bottom: 1px solid #e6e6eb;
+}
+.inputArea input {
+    display: block;
+    margin: auto;
+    padding-right: 12%;
+    width: 93.63%;
+    height: 28px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+input {
+    margin: 0;
+    padding: 0;
+    font-family: 'AppleSDGothicNeo', 'Nanum Barun Gothic', '나눔바른고딕', '나눔고딕','Nanum Gothic','돋움',Dotum,AppleGothic,Arial,sans-serif;
+    font-weight: normal;
+    line-height: 1.36;
+    letter-spacing: 0px;
+    text-decoration: none;
+    vertical-align: top;
+    border: 0;
+}
+</style>
 <%@ include file="../../layouts/subheader.jspf" %>
 	<div class="container mt-3">
-		<div id="div_new" style="position: absolute; top: 100px; left:50%; width: 552px; margin-top: 200px; margin-left: -276px; z-index: 1;">
-			<!-- 메인 로고 <img src="img/3%EB%9A%9D.png" id="logo1_img" alt="logo1" style="margin-bottom:30px;" width="25%" /> -->
-			<script	src='https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/autocomplete.js?2018031306'></script>
-			<script type="text/javascript" src="/search.js?2018031306"></script>
-			<script type="text/javascript" src="/location.js?2018031306"></script>
-			<div id="pop_sub_area">
-				<button type="submit" class="ml-sm-2 btn btn-primary" style="width: 500px; align:center" onclick="location.href='/night/store/storeSearchList'">
-					<img src="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/img/ic-search-input.png" />
-				</button>
+		<div class="banner">
+			<div id="div_banner_top" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="../images/lastnight.png" width="100%">
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
 			</div>
 		</div>
+		<div class="search_01" style="margin-bottom:10px;">
+		<div class="searchBox" style="padding-bottom:15px;">
+			<div class="inputArea">
+				<div id="btn_search">
+				<form action="/night/store/storeSearchList" method="GET">
+					<input id="txt_keyword" type="text" name="query" placeholder="맛집검색하기">
+					<button class="submit" style="display:none;"></button>
+					</form>
+					<img id="btn_delete" src="https://s3-ap-northeast-1.amazonaws.com/dcicons/2018/images/mobile/common/ic-input-cancel@2x.png" style="position:absolute; width:40px; right:0; margin-top:-33px; display:none;">
+				</div>
+			</div> <!-- inputArea :: end -->
+		</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		
-	</script>
+	</div>
 
 <%@ include file="../../layouts/subfooter.jspf"%>
 <%@ include file="../../layouts/footer.jspf"%>
