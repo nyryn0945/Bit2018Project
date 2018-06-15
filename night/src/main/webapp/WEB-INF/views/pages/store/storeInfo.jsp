@@ -14,7 +14,7 @@
 #search_area {
 	margin-left: auto;
 	margin-right: auto;
-	width: 1150px;
+	width: 100%;
 	height: 56px;
 }
 
@@ -36,7 +36,7 @@
 	padding-left: 0px;
 }
 
-.clearfix:before, .clearfix:after, .dl-horizontal dd:before,
+/* .clearfix:before, .clearfix:after, .dl-horizontal dd:before,
 	.dl-horizontal dd:after, .container:before, .container:after,
 	.container-fluid:before, .container-fluid:after, .row:before, .row:after,
 	.form-horizontal .form-group:before, .form-horizontal .form-group:after,
@@ -48,7 +48,7 @@
 	.modal-footer:after {
 	display: table;
 	content: " ";
-}
+} */
 
 #search_input_wrapper {
 	position: relative;
@@ -192,8 +192,7 @@ input, button, select, textarea {
 }
 
 .container-fluid {
-	padding-right: 15px;
-	padding-left: 15px;
+
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -216,7 +215,7 @@ a {
 #item-header {
 	color: white;
 	background-color: rgba(0, 205, 205, 0.9);
-	height: 150px;
+	height: 50px;
 }
 
 #item-header {
@@ -232,7 +231,7 @@ a {
 }
 
 .container {
-	width: 1150px;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -242,17 +241,17 @@ a {
     text-align: left;
     width: 100%;
     height: 76px;
-    line-height: 76px;
+    line-height: 42px;
 }
 
 .item-rn-title {
-	font-size: 36px;
+	font-size: 20px;
 	text-align: left;
-	font-weight: 300;
+	font-weight: 600;
 }
 /*     
 .item-container {
-    width: 1150px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 0px;
     margin-right: auto;
@@ -280,15 +279,6 @@ a {
 ._flex_1 {
 	/*     flex: 1; */
 	-webkit-flex: 1;
-}
-
-.rest-time {
-	margin-right: 60px;
-}
-
-.rest-time, .rest-menu {
-	padding-left: 32px;
-	position: relative;
 }
 
 .rest-info-title {
@@ -322,7 +312,7 @@ a {
 }
 
 .rest-info-wrapper {
-	width: 1150px;
+	width: 100%;
 	color: #4a4a4a;
 	display: flex;
 	display: -webkit-flex;
@@ -330,6 +320,12 @@ a {
 	margin-top: 41px;
 	margin-bottom: 50px;
 	text-align: left;
+}
+
+.rest-info-icon {
+    vertical-align: middle;
+    border-style: none;
+    float: left;
 }
 
 .rest-time-block, .rest-menu-block {
@@ -359,11 +355,6 @@ a {
 	padding-left: 10px;
 }
 
-.rest-time, .rest-menu {
-	padding-left: 32px;
-	position: relative;
-}
-
 .rest-time-block, .rest-menu-block {
 	margin-bottom: 15px;
 	background: url(img/profile/main/img-line.png);
@@ -375,7 +366,7 @@ a {
 
 #enc_info_modify {
 	margin: 0 auto;
-	width: 1150px;
+	width: 100%;
 	background-color: #ffffff;
 }
 
@@ -397,15 +388,11 @@ a {
 	cursor: pointer;
 }
 </style>
-<link rel="stylesheet"
-	href="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/autocomplete.css?2018031306"
-	type="text/css">
+<link rel="stylesheet" href="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/autocomplete.css?2018031306" type="text/css">
 <%@ include file="../../layouts/subheader.jspf" %>
-	<input type="hidden" name="address" class="form-control" id="address"
-		size="20" value="0">
-	<script type="text/javascript"
-		src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=ZmmkCPbYEQrryHW1Ck0T&submodules=geocoder"></script>
-	<div id="map" style="width: 100%; height: 400px;"></div>
+	<input type="hidden" name="address" class="form-control" id="address" size="20" value="0">
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=ZmmkCPbYEQrryHW1Ck0T&submodules=geocoder"></script>
+	<div id="map" style="width: 100%; height: 150px;"></div>
 	<script>
 		var map = new naver.maps.Map('map');
 		var myaddress = '${addressName}'; //주소값 받아오기 ex) 강남대로 53
@@ -448,15 +435,6 @@ a {
 					<div id="logo_cell">
 						<a href="/night/store/storeMain" style="color:white; font-size:30px; font-weight:bold;">아물</a>
 					</div>
-					<div class="container-fluid" id="search_input_wrapper">
-						<input type="text" id="s_input" name="query" autocomplete="off">
-						<button type="submit" id="s_button"></button>
-						<div id="ms_ext_area" class="clear board" style="display: none;">
-							<div id="list_area" class="list_area">
-								<div class="autocomplete-suggestions" style="position: absolute; display: none; width: 395px; max-height: 150px; z-index: 9999;"></div>
-							</div>
-						</div>
-					</div>
 
 					<script type="text/javascript"
 						src="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/user_menu.js?2018031306"></script>
@@ -482,21 +460,7 @@ a {
 									<img id="user_img" src="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/img/login/ic_login_setting_user.png">
 								</div>
 							</button>
-						</div>
-
-						<div class="dropdown dropdown-green po-relative" id="sessionOut"
-							style="display: block;">
-							<!-- ng-show="!sessionOut" -->
-							<div onclick="/member/login" style="cursor: pointer;">
-								<button type="button">
-									<span class="label-name top-user-name color-ff" style="margin-top: 13px; max-height: 22px;">로그인</span>
-								</button>
-								<div class="top-user-prof">
-									<img id="user_img" src="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/img/login/ic_login_setting_user.png">
-								</div>
-							</div>
-						</div>
-
+						</div>	
 					</div>
 
 				</div>
@@ -506,7 +470,7 @@ a {
 	</div>
 
 	<div id="item-header">
-		<div class="item-container" style="width: 1150px;">
+		<div class="item-container" style="width: 100%;">
 			<div id="item-header-top">
 				<div id="item-header-left">
 					<div id="item-rn">
@@ -519,7 +483,7 @@ a {
 	</div>
 	<div class="container">
 		<div id="item-body">
-			<div class="item-container" style="width: 1150px;">
+			<div class="item-container" style="width: 100%;">
 				<div id="item-body-contents">
 					<div class='item-information'>
 						<div class='item-information-icon'>
@@ -558,9 +522,8 @@ a {
 				</div>
 			</div>
 		</div>
-		<div style="width: 1150px; margin: 0 auto;">
-			<div class="rest-info-wrapper" style="flaot: left;">
-				<div class="rest-time _flex_1">
+		<hr>
+				<div class="rest-time _flex_1" style="width:100%;">
 					<div class="rest-info-icon">
 						<img src="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/img/profile/main/icon-profile-time@2x.png" style="width: 25px; height: 25px;">
 					</div>
@@ -582,8 +545,8 @@ a {
 						</div>
 					</div>
 				</div>
-
-				<div class="rest-menu _flex_1">
+				
+				<div class="rest-menu _flex_1" style="width:100%;">
 					<div class="rest-info-icon">
 						<img src="https://dfzrjox9sv97l.cloudfront.net/dicons_20160930/img/profile/main/icon-profile-menu@2x.png" style="width: 25px; height: 25px;">
 					</div>
@@ -615,10 +578,6 @@ a {
 						</div>
 					</div>
 				</div>
-
-			</div>
-		</div>
-
 		<hr>
 
 		<div class="enc_info_modify">
@@ -636,5 +595,5 @@ a {
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+<%@ include file="../../layouts/subfooter.jspf" %>
+<%@ include file="../../layouts/footer.jspf" %>

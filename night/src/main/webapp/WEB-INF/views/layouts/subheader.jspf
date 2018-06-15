@@ -2,7 +2,9 @@
 </head>
 <body class="bg-light">
 	<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white border-bottom box-shadow p-3 px-md-4">
-		<a class="navbar-brand" href="/night/store/storeMain">아물</a>
+		<a class="navbar-brand" href="/night/store/storeSearchList">
+			<img src="/night/uploadfile/storephoto/lastnighttitle2.png" width="120px;">
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>

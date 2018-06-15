@@ -71,6 +71,7 @@ public class StoreSearchController
 			obj.put("store_hp", store.getStore_hp());
 			obj.put("store_content", store.getStore_content());
 			obj.put("store_date", stdate);
+			obj.put("store_photo", store.getStore_photo());
 			arr.put(obj);
 		}	
 		

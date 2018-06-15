@@ -53,6 +53,13 @@ input {
     vertical-align: top;
     border: 0;
 }
+#btn_delete{
+	position: absolute;
+    width: 40px;
+    right: 0px;
+    margin-top: -33px;
+    display: block;
+}
 </style>
 <%@ include file="../../layouts/subheader.jspf" %>
 	<div class="container mt-3">
@@ -60,26 +67,25 @@ input {
 			<div id="div_banner_top" class="swiper-container">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<img src="../images/lastnight.png" width="100%">
+						<img src="/night/uploadfile/storephoto/lastnight.png" width="100%;">
 					</div>
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
 		</div>
 		<div class="search_01" style="margin-bottom:10px;">
-		<div class="searchBox" style="padding-bottom:15px;">
-			<div class="inputArea">
-				<div id="btn_search">
-				<form action="/night/store/storeSearchList" method="GET">
-					<input id="txt_keyword" type="text" name="query" placeholder="맛집검색하기">
-					<button class="submit" style="display:none;"></button>
-					</form>
-					<img id="btn_delete" src="https://s3-ap-northeast-1.amazonaws.com/dcicons/2018/images/mobile/common/ic-input-cancel@2x.png" style="position:absolute; width:40px; right:0; margin-top:-33px; display:none;">
-				</div>
-			</div> <!-- inputArea :: end -->
+			<div class="searchBox" style="padding-bottom:15px;">
+				<div class="inputArea">
+					<div id="btn_search">
+					<form action="/night/store/storeSearchList" method="GET">
+						<input id="txt_keyword" type="text" name="query" onclick="location.href='/night/store/storeSearchList';" placeholder="맛집검색하기">
+						<button class="submit" style="display:none;"></button>
+						</form>
+						<img id="btn_delete" src="https://s3-ap-northeast-1.amazonaws.com/dcicons/2018/images/mobile/common/ic-input-cancel@2x.png" style="position:absolute; width:40px; right:0; margin-top:-33px; display:none;">
+					</div>
+				</div> <!-- inputArea :: end -->
+			</div>
 		</div>
 	</div>
-	</div>
-
 <%@ include file="../../layouts/subfooter.jspf"%>
 <%@ include file="../../layouts/footer.jspf"%>

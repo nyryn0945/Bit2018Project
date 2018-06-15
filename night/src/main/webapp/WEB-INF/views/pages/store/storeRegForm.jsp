@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>NIGHT 매장등록</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page trimDirectiveWhitespaces="true" %>
+
+<%@ include file="../../layouts/header.jspf" %>
+
 <style>
-html, body { margin:0; padding:0; }
+.container>*{
+	max-width: 100%;
+}
 .body {
    font-family:MalgunGothic;
 }
@@ -15,14 +15,7 @@ html, body { margin:0; padding:0; }
    margin:0 auto;
    padding-left:250px;
 }
-.layer_white {
-   position:relative;
-   color:#222222;
-}
-.layer_black {
-   background-color:#222222;
-   color:#222222;
-}
+
 .title {
    font-size:15px;
    font-weight:bold;
@@ -34,14 +27,14 @@ padding:0; margin:0
 
 input[type=text] {
    margin:5px 0 0px 0;
-   width:90%;
+   width:100%;
    height:40px;
    border:#222222 solid 1px;
 }
 
 input[type=time] {
    margin:5px 0 20px 0;
-   width:90%;
+   width:100%;
    height:40px;
    border:#222222 solid 1px;
 }
@@ -55,10 +48,22 @@ input[type=button] {
 
 #pnum{
     margin:15px 0 20px 0;
+   border-radius: 5px 5px 5px 5px;
    width:20%;
    height:40px;
    border:#222222 solid 1px;
 }
+    
+    .filebox input[type="file"]{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0;
+    }
 
 
 input::-webkit-input-placeholder { color:#999999;  text-align: center;}
@@ -69,7 +74,7 @@ textarea::-moz-placeholder { color:#999999; }
 textarea::-ms-input-placeholder { color:#999999; }
 
 </style>
-<script type="Text/JavaScript">
+<script type="text/JavaScript">
 
 function chkForm(obj) {
    if( !obj.store_name.value ) {
@@ -145,43 +150,26 @@ var InputImage =
 })();
 
 </script>
-</head>
-<body>
-<div class="warp" style="100%;">
+      <%@ include file="../../layouts/subheader.jspf" %>
+<div class="container">
 
-   <div class="layer_white">
-      <div class="row" style="padding-top:30px;">
-         <div style="font-family:NanumMyeongjo; font-size:23px;">
-            <strong>매장 등록 페이지 입니다.</strong><br />
-            방문지역이 명확하여 마케팅에 효과적인 서비스입니다."
-         </div>
-      </div>
-      </div>
-   </div>
-   <div class="layer_white">
-      <div class="row" style=" padding-bottom:46px;">
-         <div class="clear"></div>
-      </div>
-   </div>
-
-   <div class="layer_black">
-      <div style="width:460px; margin:0 auto; padding-top:50px">
-         <div style="background-color:#FFFFFF; padding:30px 15px;">
-            <div style="margin-bottom:30px; text-align:center; font-weight:bold; font-size:27px;">신규 매장등록</div>
+      <div class="mt-3" style="width:460px; margin:0 auto; padding-top:10px">
+            <div style="margin-bottom:10px; text-align:center; font-weight:bold; font-size:27px; ">신규 매장등록</font></div>
             <form method="POST" enctype="multipart/form-data" onSubmit="return chkForm(this);">
                 <div class="title" >분류</div><br>
-                <select name="cate_id" style="font-size:18px;">
+                <select class="form-control form-control-sm" name="cate_id" style="font-size:18px;">
               <option value="1">숙박</option>
               <option value="2">놀거리</option>
               <option value="3">음식점</option>
              </select>
                 <br><br>
                 <div class="title">상호명</div>
-                     <input type="text" name="store_name" style="font-size:18px;" value="" placeholder="상호명"/><br><br>
+                     <input type="text" name="store_name" style="font-size:18px;" value="" class="form-control" placeholder="상호명"/><br><br>
                 <div class="title">매장사진</div>
                 <div id="imagePreview"></div>
-                     <input id="image" type="file"  multiple="multiple" name="photofile" onchange="InputImage();">
-                     
+                <div>
+                     <input type="file" class="btn btn-default" id="image"  name="photofile" onchange="InputImage();"><br><br>
+                </div>
                <div class="title">가게주소</div>
                 
                 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -237,34 +225,35 @@ var InputImage =
         }).open();
     }
 </script>
-         <div class="addrdiv"><input type="text" id="sample4_postcode" placeholder="우편번호" style="font-size:18px;" value="">
-         <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-         <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="store_roadaddr" style="font-size:18px;" value="">
-         <input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="store_jibunaddr" style="font-size:18px;" value="">
-         <input type="text" placeholder="상세주소" name="store_loc"  style="font-size:18px;" value="">
+         <div class="addrdiv"><input type="hidden" id="sample4_postcode" placeholder="우편번호" style="font-size:18px;" value="">
+         <input type="button" class="btn btn-dark" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+         <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="store_roadaddr" style="font-size:18px;" value="" class="form-control">
+         <input type="text" id="sample4_jibunAddress" placeholder="지번주소" name="store_jibunaddr" style="font-size:18px;" value="" class="form-control">
+         <input type="text" placeholder="상세주소" name="store_loc"  style="font-size:18px;" value="" class="form-control">
          <span id="guide" style="color:#999"></span>
          </div><br>
 
                 
                <div class="title">영업 시작 시간</div>
-               <input type="time" name="store_starttime" style="font-size:18px;" value="" />
+               <input type="time" name="store_starttime" style="font-size:18px;" value="" class="form-control"/>
                 <div class="title">영업 종료 시간</div>
-               <input type="time" name="store_endtime" style="font-size:18px;" value="" />
+               <input type="time" name="store_endtime" style="font-size:18px;" value="" class="form-control"/>
                <div class="title">전화번호</div>
                <input type="text" id="pnum" name="store_pnum1" style="font-size:18px;"> -
                 <input type="text" id="pnum" name="store_pnum2" style="font-size:18px;"/> -
                 <input type="text" id="pnum" name="store_pnum3" style="font-size:18px;"/>
                 <div class="title">홈페이지 주소</div>
-               <input type="text" name="store_hp" style="font-size:20px;" value="" />
+               <input type="text" name="store_hp" style="font-size:20px;" value="" class="form-control"/>
                 <br><br>
                <div class="title">정보</div>
-               <textarea name="store_content" style="font-size:18px; padding:10px; width:90%; height:200px; border:#222222 solid 1px; margin-top:15px;" placeholder="내용을 자유롭게 써주세요."></textarea>
-               <button type="submit" style="margin-top:30px; width:100%; height:50px; background-color:#222222; color:#FFFFFF; font-size:16px; border-radius:2px; border:none; cursor:pointer;">매장 등록</button>
+               <textarea name="store_content" style="font-size:18px; padding:10px; width:100%; height:200px; border:#222222 solid 1px; margin-top:15px;" placeholder="내용을 자유롭게 써주세요." class="form-control"></textarea>
+               <br>
+               <button type="submit" class="btn btn-dark" style=width:100%;>매장 등록</button>
             </form>
-         </div>
+
       </div>
       <div style="width:460px; margin:0 auto; padding-top:30px; padding-bottom:30px;">
    </div>
-</div>
+   </div>
 </body>
 </html>
