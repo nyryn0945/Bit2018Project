@@ -10,10 +10,6 @@ const googleMapsClient = require('@google/maps').createClient({
 });
 const models = require('../../../models/mysql');
 
-router.get('/test', (req, res) => {
-	res.json({"paths":[{"transit":[{"type":"BUS","short_name":"33","duration":2955,"departure_stop":"신분당선강남역","arrival_stop":"위례그린파크푸르지오","departure_time":"2018-5-2 00:05:51","arrival_time":"2018-5-2 00:55:06"}],"walking":496,"duration":4351},{"transit":[{"type":"BUS","short_name":"440","duration":2967,"departure_stop":"신분당선강남역","arrival_stop":"위례중앙푸르지오.신안인스빌","departure_time":"2018-5-2 00:21:16","arrival_time":"2018-5-2 01:10:43"}],"walking":1256,"duration":4703},{"transit":[{"type":"BUS","short_name":"452","duration":2541,"departure_stop":"신분당선강남역","arrival_stop":"민속마을.선경아파트","departure_time":"2018-5-2 00:17:45","arrival_time":"2018-5-2 01:00:06"}],"walking":1473,"duration":4494},{"transit":[{"type":"SUBWAY","short_name":"2호선","duration":660,"departure_stop":"강남역","arrival_stop":"잠실","departure_time":"2018-5-2 00:16:30","arrival_time":"2018-5-2 00:27:30"},{"type":"SUBWAY","short_name":"8호선","duration":840,"departure_stop":"잠실역","arrival_stop":"산성","departure_time":"2018-5-2 00:39:00","arrival_time":"2018-5-2 00:53:00"}],"walking":2420,"duration":4188}]});
-});
-
 // localhost/api/path/findLastQuickPath
 router.get('/findLastQuickPath', (req, res) => {
 

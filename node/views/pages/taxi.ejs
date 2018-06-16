@@ -3,7 +3,7 @@
 <%- include('../layouts/subheader'); %>
 
 <main role="main">
-	<div class="container mt-3">
+	<div class="container my-4">
 
 		<div class="my-3 p-3 bg-white rounded box-shadow">
 			<h5 class="mb-3 font-weight-bold">택시 메이트 검색</h5>
@@ -11,14 +11,14 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="departure">출발지</label>
-						<input type="text" name="departure" class="form-control" id="departure" placeholder="출발지" value="강남역 2호선">
+						<input type="text" name="departure" class="form-control" id="departure" placeholder="출발지" required>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="arrival">도착지</label>
-						<input type="text" name="arrival" class="form-control" id="arrival" placeholder="도착지" value="위례 그린파크 푸르지오">
+						<input type="text" name="arrival" class="form-control" id="arrival" placeholder="도착지" required>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#findMateModal">찾기</button>
+				<button type="submit" class="btn btn-dark">찾기</button>
 			</form>
 		</div>
 
@@ -54,7 +54,7 @@
 				<form class="input-group" id="chatForm">
 					<input type="text" class="form-control" id="chatInput" placeholder="대화...">
 					<div class="input-group-append">
-						<button class="btn btn-primary" type="submit">입력</button>
+						<button class="btn btn-dark" type="submit">입력</button>
 					</div>
 				</form>
 			</div>
@@ -83,6 +83,8 @@ $(function () {
 			departure: {name: departure},
 			arrival: {name: arrival}
 		});
+
+		$('#findMateModal').modal('show');
 
 		return false;
 	});

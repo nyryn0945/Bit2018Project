@@ -3,23 +3,23 @@
 <%- include('../layouts/subheader'); %>
 
 <main role="main">
-	<div class="container mt-3">
+	<div class="container my-4">
 
 		<div class="my-3 p-3 bg-white rounded box-shadow">
-			<h5 class="mb-3 font-weight-bold">집에 가자</h5>
+			<h5 class="mb-3 font-weight-bold">집으로!</h5>
 			<form class="findLastQuickPath">
-				<div class="form-row mb-3">
-					<div class="col-md-6">
+				<div class="form-row">
+					<div class="col-md-6 mb-3">
 						<label for="departure_stop">출발지</label>
-						<input type="text" name="departure_stop" class="form-control" id="departure_stop" placeholder="출발지">
+						<input type="text" name="departure_stop" class="form-control" id="departure_stop" placeholder="출발지" required>
 						<small id="stopHelp" class="form-text text-muted">위치 관련 키워드 또는 주소로 검색</small>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 mb-3">
 						<label for="arrival_stop">도착지</label>
-						<input type="text" name="arrival_stop" class="form-control" id="arrival_stop" placeholder="도착지">
+						<input type="text" name="arrival_stop" class="form-control" id="arrival_stop" placeholder="도착지" required>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">막차 검색</button>
+				<button type="submit" class="btn btn-dark">막차 검색</button>
 			</form>
 			<ul id="findLastQuickPath" class="list-group mb-0"></ul>
 		</div>

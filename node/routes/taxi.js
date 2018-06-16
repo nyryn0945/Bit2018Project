@@ -26,10 +26,6 @@ module.exports = function(io) {
 
 			Promise.all([data.departure.name, data.arrival.name].map(item => kakaoMapResult(item)))
 			.then((locs) => {
-				// api 낭비 막기 위한 임시 설정
-				locs = [ { lng: 127.02800178194782, lat: 37.498083647347194 },
-					{ lng: 127.15528203843505, lat: 37.47378208157996 } ];
-
 				data.departure.loc = {coordinates: [locs[0].lng, locs[0].lat]};
 				data.arrival.loc = {coordinates: [locs[1].lng, locs[1].lat]};
 				return Promise.all(['d', 'a'].map(item => Taxi.search(item, data)));
@@ -96,10 +92,6 @@ module.exports = function(io) {
 
 // 카카오 API로 좌표 탐색
 const kakaoMapResult = (query) => {
-
-	// api 낭비 막기 위한 임시 설정
-	return [];
-
 	var options = {
 		url: "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + urlencode(query),
 		headers: {
