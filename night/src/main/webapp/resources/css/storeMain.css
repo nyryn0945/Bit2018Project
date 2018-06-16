@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.search_01 .searchBox {
+    padding: 0 4% 0 4%;
+    background-color: #fff;
+}
+.search_01 .inputArea {
+    padding: 10px 0 0;
+}
+.search_01 .inputArea > div {
+    position: relative;
+}
+.search_01 .inputArea input {
+    margin-left: 19px;
+    padding-right: 0;
+    padding-left: 10px;
+}
+.search_01 .inputArea > div:before {
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 19px;
+    height: 19px;
+    background: url(https://s3-ap-northeast-1.amazonaws.com/dcicons/2018/images/mobile/search/ic-search-input.png) no-repeat;
+    background-size: 100% 100%;
+    content: '';
+}
+.inputArea > div {
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 0;
+    border-bottom: 1px solid #e6e6eb;
+}
+.inputArea input {
+    display: block;
+    margin: auto;
+    padding-right: 12%;
+    width: 93.63%;
+    height: 28px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+input {
+    margin: 0;
+    padding: 0;
+    font-family: 'AppleSDGothicNeo', 'Nanum Barun Gothic', '나눔바른고딕', '나눔고딕','Nanum Gothic','돋움',Dotum,AppleGothic,Arial,sans-serif;
+    font-weight: normal;
+    line-height: 1.36;
+    letter-spacing: 0px;
+    text-decoration: none;
+    vertical-align: top;
+    border: 0;
+}
+#btn_delete{
+	position: absolute;
+    width: 40px;
+    right: 0px;
+    margin-top: -33px;
+    display: block;
+}

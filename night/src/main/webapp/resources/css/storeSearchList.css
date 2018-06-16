@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.list-group-item .img img {
+	width: 100px;
+	height: 80px;
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:720px;
+    }
+}

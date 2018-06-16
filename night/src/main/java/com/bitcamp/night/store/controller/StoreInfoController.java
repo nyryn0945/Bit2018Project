@@ -4,33 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitcamp.night.store.model.Store;
 import com.bitcamp.night.store.service.StoreListService;
 
 @Controller
-public class StoreInfoController {
-
+public class StoreInfoController
+{
 	@Autowired
 	private StoreListService storeListService;
-	
-	@RequestMapping(value="/store/storeInfo")
-	public String viewMap(Store store,	Model model, @RequestParam(value="addressName") String addressName) {
-		Store resultstore = new Store();
-		resultstore = storeListService.selectByIdView(store);		
-		model.addAttribute("resultstore", resultstore);
-		
-		model.addAttribute("addressName", addressName);
-		
-		System.out.println(addressName +',' + store);
-		System.out.println("rararara : "+store);
+
+	@RequestMapping(value = "/store/storeInfo")
+	public String viewMap(Store store, Model model)
+	{
+		Store result = new Store();
+		result = storeListService.selectByIdView(store);
+		result.setStore_content(result.getStore_content().replace("\n", "<br />"));
+		model.addAttribute("store", result);
 		return "/pages/store/storeInfo";
 	}
-	
-	
-
-
-	
-
 }

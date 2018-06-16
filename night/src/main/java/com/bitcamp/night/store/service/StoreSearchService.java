@@ -9,21 +9,18 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.night.store.dao.StoreDao;
 import com.bitcamp.night.store.model.Store;
 
-
-
 @Service("StoreSearchService")
-public class StoreSearchService {
+public class StoreSearchService
+{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	private StoreDao dao;
-	
+
 	public List<Store> search(String searchStore, String startNum)
 	{
-		
 		dao = sqlSessionTemplate.getMapper(StoreDao.class);
 		List<Store> storeList = dao.searchList(searchStore, Integer.parseInt(startNum));
-		
 		return storeList;
 	}
 }

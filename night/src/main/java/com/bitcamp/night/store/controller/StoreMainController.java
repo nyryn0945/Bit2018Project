@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class StoreMainController
 {
-	@RequestMapping(value = "/store/storeMain", method = RequestMethod.GET)
-	public String post()
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String main()
 	{			
 		return "/pages/store/storeMain";
 	}

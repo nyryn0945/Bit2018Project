@@ -1,5 +1,7 @@
 package com.bitcamp.night.store.service;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -10,32 +12,38 @@ import com.bitcamp.night.store.dao.StoreDao;
 import com.bitcamp.night.store.model.Store;
 
 @Service
-public class StoreUpdateService {
+public class StoreUpdateService
+{
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
 
-   @Autowired
-   private SqlSessionTemplate sqlSessionTemplate;
-   
-   private StoreDao dao;
+	private StoreDao dao;
 
-   public Store selectById(int store_id) {
-      
-      dao = sqlSessionTemplate.getMapper(StoreDao.class);
-      
-      Store store = dao.selectById(store_id);
-      
-      System.out.println(store_id);
-      
-      //return dao.selectById(store_id);
-      return store;
-   }
+	public Store selectById(int store_id)
+	{
+		dao = sqlSessionTemplate.getMapper(StoreDao.class);
+		Store store = dao.selectById(store_id);
+		System.out.println(store);
+		return store;
+	}
 
-   public int storeUpdate(Store store, HttpServletRequest request) {
+	public int storeUpdate(Store store, HttpServletRequest request) throws Exception
+	{
+		int resultCnt = 0;
+		dao = sqlSessionTemplate.getMapper(StoreDao.class);
+		
+		String uploadURI = "/uploadfile/storephoto";
+		String dir = request.getSession().getServletContext().getRealPath(uploadURI);
+		if (!store.getPhotofile().isEmpty()) {
+			String fileName = store.getStore_id() + "_" + store.getPhotofile().getOriginalFilename();
+			store.getPhotofile().transferTo(new File(dir, fileName));
+			store.setStore_photo(fileName);
+			resultCnt = dao.storeUpdate(store);
+		}
+		else {
+			resultCnt = dao.storeUpdateNoPhoto(store);	
+		}
 
-      dao = sqlSessionTemplate.getMapper(StoreDao.class);
-      
-      // dao 요청 : 데이터 저장 요청
-      int resultCnt = dao.storeUpdate(store);
-      
-      return resultCnt;
-   }
+		return resultCnt;
+	}
 }

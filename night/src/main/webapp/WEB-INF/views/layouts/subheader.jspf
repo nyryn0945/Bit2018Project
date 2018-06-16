@@ -2,8 +2,8 @@
 </head>
 <body class="bg-light">
 	<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white border-bottom box-shadow p-3 px-md-4">
-		<a class="navbar-brand" href="/night/store/storeSearchList">
-			<img src="/night/uploadfile/storephoto/lastnighttitle2.png" width="120px;">
+		<a class="navbar-brand" href="/night">
+			<img src="/static/img/lastnighttitle2.png" width="120px;">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -11,9 +11,9 @@
 
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="/lastpath">오늘의막차</a></li>
+				<li class="nav-item"><a class="nav-link" href="/lastpath">오늘의막차</a></li>
 				<li class="nav-item"><a class="nav-link" href="/taxi">택시메이트</a></li>
-				<li class="nav-item"><a class="nav-link" href="/night/store/main">액티비티</a></li>
+				<%--<li class="nav-item"><a class="nav-link" href="/night/store/main">액티비티</a></li> --%>
 			</ul>
 			<ul class="navbar-nav">
 				<c:choose>

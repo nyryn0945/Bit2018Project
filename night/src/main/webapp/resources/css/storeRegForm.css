@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.form-group>label, .col>label {
+	font-weight: bold;
+}
+
+.form-control,
+.custom-file-label {
+	border-color: #343a40;
+}
+
+.custom-file-label::after {
+	color: #fff;
+	background-color: #343a40;
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:720px;
+    }
+}
