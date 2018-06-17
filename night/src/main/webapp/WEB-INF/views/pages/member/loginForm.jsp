@@ -6,7 +6,7 @@
 <%@ include file="../../layouts/subheader.jspf" %>
 
 <main role="main">
-	<div class="container mt-3">
+	<div class="container my-4">
 		
 		<c:if test="${ERROR_MSG != null}">
 		<div class="alert alert-danger mb-3" role="alert">${ERROR_MSG}</div>

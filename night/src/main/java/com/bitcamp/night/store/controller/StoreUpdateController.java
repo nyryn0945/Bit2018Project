@@ -29,6 +29,10 @@ public class StoreUpdateController
 		if (mem == null)
 			return "redirect:http://localhost/member/login";
 		
+		Store storeForCheck = storeUpdateService.selectById(store_id);
+		if (storeForCheck.getMb_id() != mem.getId()) // 작성자가 아니면 수정할 수 없음
+			return "redirect:/store/storeInfo?store_id=" + store_id;
+		
 		Store store = storeUpdateService.selectById(store_id);
 		model.addAttribute("store", store);
 		return "pages/store/storeRegForm";
@@ -37,6 +41,7 @@ public class StoreUpdateController
 	@RequestMapping(method = RequestMethod.POST)
 	public String storeUpdate(Store store, Model model, HttpServletRequest request) throws Exception
 	{
+		// 회원만 삭제 가능
 		HttpSession session = request.getSession();
 		Member mem = (Member) session.getAttribute("MEMBER");
 		if (mem == null)

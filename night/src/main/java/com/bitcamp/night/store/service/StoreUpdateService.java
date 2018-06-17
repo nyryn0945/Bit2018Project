@@ -23,7 +23,6 @@ public class StoreUpdateService
 	{
 		dao = sqlSessionTemplate.getMapper(StoreDao.class);
 		Store store = dao.selectById(store_id);
-		System.out.println(store);
 		return store;
 	}
 

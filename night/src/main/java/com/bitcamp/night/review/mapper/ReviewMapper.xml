@@ -3,19 +3,30 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.bitcamp.night.review.dao.ReviewDao">
+<mapper namespace="com.bitcamp.night.review.dao.ReviewDao">
 
-    <insert id = "insertReview" parameterType = "com.bitcamp.night.review.model.Review">
-       insert into review (MB_ID, STORE_ID, REVIEW_CONTENT )
-       values ( #{MB_ID}, #{STORE_ID}, #{REVIEW_CONTENT} )
-    </insert>
-   
-    <select id = "selectList" resultType = "com.bitcamp.night.review.model.Review">
-       select * from review
-    
-    
-    </select>
+	<insert id="insertReview"
+		parameterType="com.bitcamp.night.review.model.Review" 
+		useGeneratedKeys="true" keyProperty="review_id">
+		INSERT INTO REVIEW (MB_ID, STORE_ID, REVIEW_CONTENT) 
+		VALUES (#{mb_id}, #{store_id}, #{review_content})
+	</insert>
 
+	<select id="selectList"
+		resultType="com.bitcamp.night.review.model.ReviewExtend">
+		SELECT REVIEW_ID, MB_ID, STORE_ID, REVIEW_CONTENT, REVIEW_DATE, MB_USERNAME 
+		FROM REVIEW NATURAL JOIN MEMBER   
+		WHERE STORE_ID = #{store_id}
+	</select>
+	
+	<select id="selectById"
+		resultType="com.bitcamp.night.review.model.Review">
+		SELECT * FROM REVIEW WHERE REVIEW_ID = #{review_id}	
+	</select>
+	
+	<delete id="deleteReview">
+		DELETE FROM REVIEW WHERE REVIEW_ID = #{review_id}
+	</delete>
 
 </mapper>	
 	

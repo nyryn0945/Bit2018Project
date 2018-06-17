@@ -4,68 +4,80 @@ import java.util.Date;
 
 public class Review
 {
-	private int REVIEW_ID;
-	private int MB_ID;
-	private int STORE_ID;
-	private String REVIEW_CONTENT;
-	private Date REVIEW_DATE;
+	private int review_id;
+	private int mb_id;
+	private int store_id;
+	private String review_content;
+	private Date review_date;
 
-	public int getREVIEW_ID()
+	public Review()
 	{
-		return REVIEW_ID;
+
 	}
 
-	public void setREVIEW_ID(int REVIEW_ID)
+	public Review(int review_id, int mb_id, int store_id, String review_content, Date review_date)
 	{
-		this.REVIEW_ID = REVIEW_ID;
+		this.review_id = review_id;
+		this.mb_id = mb_id;
+		this.store_id = store_id;
+		this.review_content = review_content;
+		this.review_date = review_date;
 	}
 
-	public int getMB_ID()
+	public int getReview_id()
 	{
-		return MB_ID;
+		return review_id;
 	}
 
-	public void setMB_ID(int MB_ID)
+	public void setReview_id(int review_id)
 	{
-		this.MB_ID = MB_ID;
+		this.review_id = review_id;
 	}
 
-	public int getSTORE_ID()
+	public int getMb_id()
 	{
-		return STORE_ID;
+		return mb_id;
 	}
 
-	public void setSTORE_ID(int STORE_ID)
+	public void setMb_id(int mb_id)
 	{
-		this.STORE_ID = STORE_ID;
+		this.mb_id = mb_id;
 	}
 
-	public String getREVIEW_CONTENT()
+	public int getStore_id()
 	{
-		return REVIEW_CONTENT;
+		return store_id;
 	}
 
-	public void setREVIEW_CONTENT(String REVIEW_CONTENT)
+	public void setStore_id(int store_id)
 	{
-		this.REVIEW_CONTENT = REVIEW_CONTENT;
+		this.store_id = store_id;
 	}
 
-	public Date getREVIEW_DATE()
+	public String getReview_content()
 	{
-		return REVIEW_DATE;
+		return review_content;
 	}
 
-	public void setREVIEW_DATE(Date REVIEW_DATE)
+	public void setReview_content(String review_content)
 	{
-		this.REVIEW_DATE = REVIEW_DATE;
+		this.review_content = review_content;
+	}
+
+	public Date getReview_date()
+	{
+		return review_date;
+	}
+
+	public void setReview_date(Date review_date)
+	{
+		this.review_date = review_date;
 	}
 
 	@Override
 	public String toString()
 	{
-		// TODO Auto-generated method stub
-		return "리뷰 데이터 정보 [ID = " + REVIEW_ID + ", MB_ID = " + MB_ID + ", STORE_ID = " + STORE_ID
-				+ ", REVIEW_CONTENT = " + REVIEW_CONTENT + ", REVIEW_DATE = " + REVIEW_DATE + "]";
+		return "Review [review_id=" + review_id + ", mb_id=" + mb_id + ", store_id=" + store_id + ", review_content="
+				+ review_content + ", review_date=" + review_date + "]";
 	}
-
 }

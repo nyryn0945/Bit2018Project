@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.night.review.dao.ReviewDao;
-import com.bitcamp.night.review.model.Review;
+import com.bitcamp.night.review.model.ReviewExtend;
 
 @Service("ReviewListService")
 public class ReviewListService
@@ -17,12 +17,10 @@ public class ReviewListService
 
 	private ReviewDao dao;
 
-	public List<Review> getReviewList()
+	public List<ReviewExtend> selectListByStordId(int store_id)
 	{
 		dao = sqlSessionTemplate.getMapper(ReviewDao.class);
-
-		List<Review> list = dao.selectList();
-
+		List<ReviewExtend> list = dao.selectList(store_id);
 		return list;
 	}
 

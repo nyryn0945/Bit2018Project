@@ -8,7 +8,6 @@ const googleMapsClient = require('@google/maps').createClient({
 	key: "AIzaSyBNOXW6jN3IaO-u2gFywBBrRHkQ1z2CIxk",
 	Promise: Promise
 });
-const models = require('../../../models/mysql');
 
 // localhost/api/path/findLastQuickPath
 router.get('/findLastQuickPath', (req, res) => {
